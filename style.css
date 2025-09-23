@@ -1,0 +1,92 @@
+/* --- Reset & Font --- */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* --- Header --- */
+header {
+  background: #005f73;
+  color: #fff;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+/* --- Navigasi --- */
+nav a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* --- Main Content --- */
+main {
+  padding: 20px;
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  background: #eee;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+/* --- Menu Cepat (Home) --- */
+section ul {
+  list-style: none;         /* hilangkan bullet/list */
+  padding: 0;
+  display: flex;            /* sejajarkan item ke samping */
+  justify-content: center;  /* rata tengah */
+  gap: 20px;                /* jarak antar item */
+  flex-wrap: wrap;          /* biar turun ke bawah di HP */
+}
+
+section ul li {
+  background: #f0f0f0;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  width: 220px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+section ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #005f73;
+}
+
+section ul li:hover {
+  background: #e0f7fa;
+}
+
+/* --- Selamat Datang & Banner --- */
+main h2, 
+main p {
+  text-align: center;      /* Judul dan paragraf rata tengah */
+}
+
+/* --- Banner Gambar --- */
+main img {
+  display: block;
+  margin: 20px auto;       /* Banner otomatis di tengah */
+  max-width: 100%;         /* Responsif di HP */
+  height: auto;
+  border-radius: 10px;     /* Sudut membulat */
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2); /* Efek bayangan */
+}
+
+/* --- Quote / Motto --- */
+main blockquote {
+  text-align: center;
+  font-style: italic;
+  margin: 20px 0;
+  quotes: "“" "”" "‘" "’"; /* opsional untuk style kutipan */
+}
