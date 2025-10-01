@@ -40,7 +40,7 @@ nav a:hover {
 main {
   padding: 20px;
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 0 auto;          /* Biar semua isi di tengah */
 }
 
 main h2 {
@@ -59,10 +59,20 @@ main p {
 footer {
   text-align: center;
   background: #eee;
-  padding: 10px;
+  padding: 15px;
   margin-top: 20px;
   font-size: 0.9em;
   color: #555;
+}
+
+footer a {
+  color: #005f73;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
 
 /* --- Menu Cepat (Home) --- */
@@ -97,7 +107,7 @@ section ul li a {
 }
 
 /* --- Banner Gambar --- */
-main img {
+main img.banner {
   display: block;
   margin: 20px auto;
   max-width: 100%;
@@ -161,7 +171,7 @@ main blockquote {
   border-radius: 8px;
 }
 
-/* --- Video (Responsif) --- */
+/* --- Video (Card Grid Responsif) --- */
 .video-list {
   display: grid;
   gap: 30px;
@@ -173,6 +183,12 @@ main blockquote {
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.video-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .video-item h3 {
@@ -213,6 +229,7 @@ main blockquote {
   margin-bottom: 10px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   font-size: 1.1em;
+  text-align: center;
 }
 
 .contact-info a {
@@ -230,7 +247,8 @@ main blockquote {
   padding-bottom: 75%;
   height: 0;
   overflow: hidden;
-  margin-bottom: 20px;
+  margin: 20px auto;
+  max-width: 800px;
 }
 
 .form-container iframe {
@@ -241,5 +259,6 @@ main blockquote {
   height: 100%;
   border-radius: 8px;
 }
+
 
 
