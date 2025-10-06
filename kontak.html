@@ -3,9 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kontak</title>
+  <title>Kontak | LMS Alat Ukur</title>
   <meta name="description" content="Hubungi developer Website Pembelajaran Alat Ukur melalui email, WhatsApp, atau isi formulir kritik dan saran.">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* --- Kontak & Form --- */
+    .contact-info {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .contact-info li {
+      background: #fff;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .contact-info a {
+      color: #0a9396;
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto 40px auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .form-container iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+
+    @media (max-width: 650px) {
+      .contact-info {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .form-container iframe {
+        height: 600px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -29,11 +84,23 @@
     <p>Kami sangat menghargai masukan Anda. Silakan isi form berikut agar website ini bisa lebih baik ke depannya.</p>
     
     <div class="form-container">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeqq-VHwEzhRysB3g0JbZze8wkldXIfTmU-VxsJ4unZgl82rA/viewform?usp=header"
-              frameborder="0" allowfullscreen>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeqq-VHwEzhRysB3g0JbZze8wkldXIfTmU-VxsJ4unZgl82rA/viewform?usp=sf_link"
+              allowfullscreen>
       </iframe>
     </div>
-    
-    <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeqq-VHwEzhRysB3g0JbZze8wkldXIfTmU-VxsJ4unZgl82rA/viewform?usp
+
+    <p style="text-align:center;">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeqq-VHwEzhRysB3g0JbZze8wkldXIfTmU-VxsJ4unZgl82rA/viewform?usp=sf_link" target="_blank">
+        Buka Formulir di Tab Baru
+      </a>
+    </p>
+  </main>
+
+  <footer>
+    <p>© 2025 Website Pembelajaran Alat Ukur | Dibuat oleh Ferdi</p>
+  </footer>
+</body>
+</html>
+
 
 
