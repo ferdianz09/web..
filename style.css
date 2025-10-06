@@ -28,6 +28,11 @@ header nav {
   gap: 10px;
 }
 
+/* Spacer untuk push login/logout ke kanan */
+nav .spacer {
+  flex: 1;
+}
+
 /* --- Navigasi --- */
 nav a {
   color: #fff;
@@ -60,32 +65,34 @@ main {
   padding: 20px;
 }
 
-/* --- Footer --- */
-footer {
-  text-align: center;
-  background: #eee;
-  padding: 10px;
-  margin-top: 20px;
+/* --- Banner --- */
+.banner {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  margin: 20px 0;
 }
 
 /* --- Menu Cepat (Home) --- */
 section ul {
-  list-style: none;
-  padding: 0;
   display: flex;
-  justify-content: center;
-  gap: 20px;
   flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 0;
+  list-style: none;
 }
 
 section ul li {
   background: #f0f0f0;
   padding: 15px;
   border-radius: 8px;
+  width: 250px;
   text-align: center;
-  width: 220px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 section ul li a {
@@ -95,8 +102,8 @@ section ul li a {
 }
 
 section ul li:hover {
-  background: #e0f7fa;
-  transform: translateY(-3px);
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 /* --- Banner & Materi/Video Headings --- */
@@ -104,21 +111,11 @@ main h2, main p {
   text-align: center;
 }
 
-/* --- Banner Gambar --- */
-main img {
-  display: block;
-  margin: 20px auto;
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-}
-
 /* --- Quote / Motto --- */
-main blockquote {
+blockquote {
   text-align: center;
   font-style: italic;
-  margin: 20px 0;
+  margin: 30px 20px;
   quotes: "“" "”" "‘" "’";
 }
 
@@ -263,24 +260,6 @@ main blockquote {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* --- Responsive --- */
-@media (max-width: 650px) {
-  .materi-item,
-  .video-item {
-    width: 90%;
-  }
-
-  .video-item iframe {
-    height: 200px;
-  }
-}
-
-@media (max-width: 600px) {
-  section ul {
-    flex-direction: column;
-    align-items: center;
-  }
-}
 /* --- Kontak Section --- */
 .contact-info {
   list-style: none;
@@ -334,14 +313,54 @@ main blockquote {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+/* --- Footer --- */
+footer {
+  text-align: center;
+  background: #eee;
+  padding: 10px;
+  margin-top: 20px;
+}
+
 /* --- Responsive --- */
 @media (max-width: 768px) {
+  .materi-item,
+  .video-item {
+    width: 80%;
+  }
+
   .form-container iframe {
     height: 650px;
   }
 }
 
+@media (max-width: 650px) {
+  .materi-item,
+  .video-item {
+    width: 90%;
+  }
+
+  .video-item iframe {
+    height: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  section ul {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 @media (max-width: 480px) {
+  nav a {
+    padding: 6px 8px;
+    font-size: 14px;
+  }
+
+  section ul li {
+    width: 95%;
+  }
+
   .form-container iframe {
     height: 550px;
   }
@@ -350,6 +369,7 @@ main blockquote {
     padding: 10px;
   }
 }
+
 
 
 
