@@ -14,6 +14,10 @@
       <a href="materi.html">Materi</a>
       <a href="video.html">Video</a>
       <a href="kontak.html">Kontak</a>
+
+      <!-- Spacer untuk push auth ke kanan -->
+      <div class="spacer"></div>
+
       <!-- Wrapper untuk tombol auth -->
       <div class="nav-auth"></div>
     </nav>
@@ -22,7 +26,11 @@
   <main>
     <h2>Selamat Datang</h2>
     <p>Website ini berisi materi pembelajaran <b>Dasar-Dasar Program Keahlian</b> tentang alat ukur di SMK.</p>
+
+    <!-- Banner -->
     <img src="assets/banner.jpg" alt="Belajar Alat Ukur" class="banner">
+
+    <!-- Menu cepat -->
     <section>
       <h2>Apa yang bisa Anda temukan di sini?</h2>
       <ul>
@@ -31,6 +39,7 @@
         <li><a href="kontak.html">💬 Kritik & Saran</a></li>
       </ul>
     </section>
+
     <blockquote>"Belajar tanpa praktik bagaikan membaca peta tanpa pernah berjalan."</blockquote>
   </main>
 
@@ -39,7 +48,7 @@
     <p><a href="kontak.html">Hubungi Kami</a></p>
   </footer>
 
-  <!-- 🔥 Firebase Auth -->
+  <!-- Firebase Auth -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
@@ -92,6 +101,7 @@
   </script>
 </body>
 </html>
+
 
 
 
