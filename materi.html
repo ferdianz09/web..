@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Materi Pembelajaran</title>
-  <meta name="description" content="Materi pembelajaran alat ukur di SMK: Fluke Tester, LAN Tester, OPM, OTDR, Multimeter, Oscilloscope. Lengkap dengan ringkasan dan link PDF.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,42 +24,42 @@
     <section class="materi-list">
       <article class="materi-item">
         <h3>🔌 FLUKE Tester</h3>
-        <p>Alat untuk menguji kualitas kabel jaringan, mendeteksi error, dan memastikan performa jaringan.</p>
+        <p>Alat untuk menguji kualitas kabel jaringan.</p>
         <a href="https://drive.google.com/file/d/1zG9FZL4CzJc8wbicSmfOj7eIdyeP0vh7/view?usp=drive_link" target="_blank">📥 Lihat Materi</a>
         <img src="assets/fluke.jpg" alt="Fluke Tester" class="materi-img">
       </article>
 
       <article class="materi-item">
         <h3>🔧 LAN Tester</h3>
-        <p>Digunakan untuk memeriksa sambungan kabel UTP/STP agar sesuai standar straight-through atau crossover.</p>
+        <p>Memeriksa sambungan kabel UTP/STP.</p>
         <a href="https://drive.google.com/file/d/12jw_9KnXqcfUku2zstZ9Le5-Zfer6hU8/view?usp=drive_link" target="_blank">📥 Lihat Materi</a>
         <img src="assets/lan-tester.jpg" alt="LAN Tester" class="materi-img">
       </article>
 
       <article class="materi-item">
         <h3>💡 Optical Power Meter (OPM)</h3>
-        <p>Digunakan untuk mengukur daya optik pada kabel fiber optik.</p>
+        <p>Mengukur daya optik kabel fiber.</p>
         <a href="https://drive.google.com/file/d/1KiTQowOXOOfHzcthynH6hbIyPjyA3kgg/view?usp=drive_link" target="_blank">📥 Lihat Materi</a>
         <img src="assets/opm.jpg" alt="Optical Power Meter" class="materi-img">
       </article>
 
       <article class="materi-item">
         <h3>🔎 OTDR</h3>
-        <p>Optical Time Domain Reflectometer untuk mengukur panjang kabel fiber dan mendeteksi kerusakan pada serat optik.</p>
+        <p>Mengukur panjang kabel fiber dan mendeteksi kerusakan.</p>
         <a href="https://drive.google.com/file/d/1PgE2Qsu7abn6xi942RksKyDmUMctXuCY/view?usp=drive_link" target="_blank">📥 Lihat Materi</a>
         <img src="assets/otdr.jpg" alt="OTDR" class="materi-img">
       </article>
 
       <article class="materi-item">
         <h3>🔋 Multimeter</h3>
-        <p>Alat untuk mengukur tegangan, arus, dan resistansi, baik analog maupun digital.</p>
+        <p>Mengukur tegangan, arus, dan resistansi.</p>
         <a href="https://drive.google.com/file/d/1iJneSps_Ri950LUlR9_qlWKaCJvZTK34/view?usp=drive_link" target="_blank">📥 Lihat Materi</a>
         <img src="assets/multimeter.jpg" alt="Multimeter" class="materi-img">
       </article>
 
       <article class="materi-item">
         <h3>📊 Oscilloscope</h3>
-        <p>Digunakan untuk menampilkan bentuk gelombang sinyal listrik, sehingga bisa mempelajari frekuensi dan tegangan secara detail.</p>
+        <p>Menampilkan bentuk gelombang sinyal listrik.</p>
         <a href="https://drive.google.com/file/d/1Gk5UkbRRjG6pmhOXI0kJ9E0oIttp5mv1/view?usp=drive_link" target="_blank">📥 Lihat Materi</a>
         <img src="assets/osiloskop.jpg" alt="Oscilloscope" class="materi-img">
       </article>
@@ -68,9 +67,47 @@
   </main>
 
   <footer>
-    <p>© 2025 Website Pembelajaran Alat Ukur | Dibuat oleh Ferdi</p>
+    <p>© 2025 Website Pembelajaran Alat Ukur</p>
   </footer>
+
+  <!-- 🔒 Firebase Auth -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCavsla0yBJkRrZ7H4uUePAQPkKnPVYbbo",
+      authDomain: "lms-ferdianz.firebaseapp.com",
+      projectId: "lms-ferdianz",
+      storageBucket: "lms-ferdianz.firebasestorage.app",
+      messagingSenderId: "149251617687",
+      appId: "1:149251617687:web:17a480faf6a2436f3a8ad2",
+      measurementId: "G-MY4BP9CD9N"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const nav = document.querySelector("nav");
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const logoutBtn = document.createElement("button");
+        logoutBtn.textContent = "Logout";
+        logoutBtn.style.marginLeft = "10px";
+        logoutBtn.onclick = async () => {
+          await signOut(auth);
+          alert("Anda telah logout.");
+          window.location.href = "login.html";
+        };
+        nav.appendChild(logoutBtn);
+      } else {
+        alert("Silakan login terlebih dahulu!");
+        window.location.href = "login.html";
+      }
+    });
+  </script>
 </body>
 </html>
+
 
 
