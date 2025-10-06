@@ -3,30 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login | LMS Alat Ukur</title>
+  <title>Login</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="auth-container">
-    <h2>Login Akun</h2>
-    <form id="loginForm">
-      <label>Email:</label>
-      <input type="email" id="email" required>
+  <header>
+    <h1>Login</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="materi.html">Materi</a>
+      <a href="video.html">Video</a>
+      <a href="kontak.html">Kontak</a>
+    </nav>
+  </header>
 
-      <label>Password:</label>
-      <input type="password" id="password" required>
+  <main>
+    <div class="form-container">
+      <h2>Login Pengguna</h2>
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Masukkan email">
 
-      <button type="submit">Login</button>
-    </form>
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Masukkan password">
 
-    <p>Belum punya akun? <a href="register.html">Daftar di sini</a></p>
-  </div>
+      <button id="loginBtn">Login</button>
 
+      <p>Belum punya akun? <a href="register.html">Daftar di sini</a></p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Website Pembelajaran Alat Ukur</p>
+  </footer>
+
+  <!-- Firebase Auth -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
     import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
 
-    // Konfigurasi Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyCavsla0yBJkRrZ7H4uUePAQPkKnPVYbbo",
       authDomain: "lms-ferdianz.firebaseapp.com",
@@ -40,10 +54,9 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    // Listener form login
-    const form = document.getElementById("loginForm");
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+    const loginBtn = document.getElementById("loginBtn");
+
+    loginBtn.addEventListener("click", async () => {
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
 
@@ -58,3 +71,4 @@
   </script>
 </body>
 </html>
+
