@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <h1>Daftar Akun</h1>
+    <h1>LMS Alat Ukur</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="materi.html">Materi</a>
@@ -19,13 +19,12 @@
 
   <main>
     <div class="form-container">
-      <h2>📝 Buat Akun Baru</h2>
-      <form id="registerForm">
-        <input type="email" id="email" placeholder="Email" required style="width:80%; padding:8px; margin:5px 0;">
-        <input type="password" id="password" placeholder="Password" required style="width:80%; padding:8px; margin:5px 0;">
-        <button type="submit" class="auth-btn" style="margin-top:10px;">Daftar</button>
-      </form>
-      <p style="margin-top:15px;">Sudah punya akun? <a href="login.html">Login di sini</a></p>
+      <h2>Daftar Akun</h2>
+      <input type="text" id="name" placeholder="Nama Lengkap" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button class="auth-btn" id="registerBtn">Daftar</button>
+      <p>Sudah punya akun? <a href="login.html">Login di sini</a></p>
     </div>
   </main>
 
@@ -36,7 +35,7 @@
   <!-- Firebase Auth -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+    import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCavsla0yBJkRrZ7H4uUePAQPkKnPVYbbo",
@@ -51,17 +50,20 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    const form = document.getElementById("registerForm");
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+    const registerBtn = document.getElementById("registerBtn");
+
+    registerBtn.addEventListener("click", async () => {
+      const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
+
       try {
-        await createUserWithEmailAndPassword(auth, email, password);
-        alert("Pendaftaran berhasil! Silakan login.");
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(userCredential.user, { displayName: name });
+        alert("Pendaftaran berhasil!");
         window.location.href = "login.html";
       } catch (error) {
-        alert(error.message);
+        alert("Pendaftaran gagal: " + error.message);
       }
     });
   </script>
