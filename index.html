@@ -16,6 +16,7 @@
       <a href="materi.html">Materi</a>
       <a href="video.html">Video</a>
       <a href="kontak.html">Kontak</a>
+      <!-- Tombol Login/Daftar/Logout akan ditambahkan via JS -->
     </nav>
   </header>
 
@@ -47,9 +48,10 @@
     <p><a href="kontak.html">Hubungi Kami</a></p>
   </footer>
 
-  <!-- 🔥 Firebase SDK -->
+  <!-- 🔥 Firebase SDK & Auth -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js";
 
     const firebaseConfig = {
@@ -64,9 +66,43 @@
 
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+
     console.log("✅ Firebase berhasil terhubung!");
+
+    // Tambahkan tombol Login/Daftar/Logout sesuai status login
+    const nav = document.querySelector("nav");
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User sudah login -> tampilkan Logout
+        const logoutBtn = document.createElement("a");
+        logoutBtn.href = "#";
+        logoutBtn.textContent = "Logout";
+        logoutBtn.style.marginLeft = "auto";
+        logoutBtn.addEventListener("click", async () => {
+          await signOut(auth);
+          location.reload();
+        });
+        nav.appendChild(logoutBtn);
+      } else {
+        // User belum login -> tampilkan Login & Daftar
+        const loginLink = document.createElement("a");
+        loginLink.href = "login.html";
+        loginLink.textContent = "Login";
+        loginLink.style.marginLeft = "auto";
+
+        const registerLink = document.createElement("a");
+        registerLink.href = "register.html";
+        registerLink.textContent = "Daftar";
+
+        nav.appendChild(loginLink);
+        nav.appendChild(registerLink);
+      }
+    });
   </script>
 </body>
 </html>
+
 
 
