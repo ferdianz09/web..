@@ -19,18 +19,13 @@ header h1 {
   margin: 0 0 10px 0;
 }
 
-/* --- Header Nav Flex --- */
+/* Header Flex untuk Nav */
 header nav {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
-}
-
-/* Spacer untuk push auth ke kanan */
-nav .spacer {
-  flex: 1;
 }
 
 /* --- Navigasi --- */
@@ -39,225 +34,30 @@ nav a {
   text-decoration: none;
   padding: 6px 12px;
   border-radius: 5px;
-  transition: background 0.3s;
 }
 
-nav a:hover,
-nav a.active {
+nav a:hover {
   background: #0a9396;
 }
 
-/* Tombol login/daftar/Logout */
-.auth-btn {
+/* --- Logout Button --- */
+nav button {
   background: #0a9396;
-  color: #fff;
-  padding: 6px 12px;
+  color: white;
+  border: none;
+  padding: 5px 10px;
   border-radius: 5px;
-  text-decoration: none;
+  cursor: pointer;
   font-weight: bold;
-  transition: background 0.3s;
 }
 
-.auth-btn:hover {
+nav button:hover {
   background: #005f73;
-  cursor: pointer;
 }
 
 /* --- Main Content --- */
 main {
   padding: 20px;
-  min-height: 60vh;
-}
-
-/* --- Banner Fullscreen Responsif --- */
-.banner {
-  width: 100vw;
-  height: 60vh;
-  object-fit: cover;
-  display: block;
-  border-radius: 0;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-  margin: 0 0 20px 0;
-}
-
-/* --- Menu Cepat --- */
-section ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  padding: 0;
-  list-style: none;
-}
-
-section ul li {
-  background: #f0f0f0;
-  padding: 15px;
-  border-radius: 8px;
-  width: 250px;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-section ul li a {
-  text-decoration: none;
-  font-weight: bold;
-  color: #005f73;
-}
-
-section ul li:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-/* --- Headings & Quotes --- */
-main h2, main p, blockquote {
-  text-align: center;
-}
-
-blockquote {
-  font-style: italic;
-  margin: 30px 20px;
-  quotes: "“" "”" "‘" "’";
-}
-
-/* --- Materi & Video List --- */
-.materi-list, .video-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px 0;
-}
-
-.materi-item, .video-item {
-  background: #fff;
-  border-radius: 10px;
-  padding: 15px;
-  width: 300px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.materi-item:hover, .video-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.materi-item a, .video-item a {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 7px 12px;
-  background: #005f73;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-.materi-item a:hover, .video-item a:hover {
-  background: #0a9396;
-}
-
-.video-item iframe {
-  width: 100%;
-  height: 200px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-/* --- Kontak --- */
-.contact-info {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  text-align: center;
-}
-
-.contact-info li {
-  background: #fff;
-  padding: 12px 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.contact-info li:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-.contact-info a {
-  color: #005f73;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.contact-info a:hover {
-  text-decoration: underline;
-}
-
-/* --- Form (Login & Registrasi) --- */
-.form-container {
-  max-width: 400px;
-  margin: 30px auto;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  background: #fff;
-  text-align: center;
-}
-
-.form-container h2 {
-  margin-bottom: 20px;
-  color: #005f73;
-}
-
-.form-container input[type="email"],
-.form-container input[type="password"],
-.form-container input[type="text"] {
-  width: 90%;
-  padding: 12px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  box-sizing: border-box;
-}
-
-.form-container input:focus {
-  border-color: #0a9396;
-  outline: none;
-  box-shadow: 0 0 5px rgba(10,147,150,0.4);
-}
-
-.form-container button.auth-btn {
-  width: 50%;
-  padding: 12px;
-  margin-top: 15px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.form-container p {
-  margin-top: 15px;
-  font-size: 14px;
-}
-
-.form-container a {
-  color: #0a9396;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.form-container a:hover {
-  text-decoration: underline;
 }
 
 /* --- Footer --- */
@@ -268,29 +68,217 @@ footer {
   margin-top: 20px;
 }
 
+/* --- Menu Cepat (Home) --- */
+section ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+section ul li {
+  background: #f0f0f0;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  width: 220px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+section ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #005f73;
+}
+
+section ul li:hover {
+  background: #e0f7fa;
+  transform: translateY(-3px);
+}
+
+/* --- Banner & Materi/Video Headings --- */
+main h2, main p {
+  text-align: center;
+}
+
+/* --- Banner Gambar --- */
+main img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+/* --- Quote / Motto --- */
+main blockquote {
+  text-align: center;
+  font-style: italic;
+  margin: 20px 0;
+  quotes: "“" "”" "‘" "’";
+}
+
+/* --- Auth / Login & Registrasi --- */
+.auth-container {
+  max-width: 400px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.auth-container h2 {
+  text-align: center;
+  color: #005f73;
+  margin-bottom: 20px;
+}
+
+.auth-container label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #333;
+}
+
+.auth-container input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.auth-container button {
+  width: 100%;
+  background: #005f73;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.auth-container button:hover {
+  background: #0a9396;
+}
+
+.auth-container p {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.auth-container a {
+  color: #0a9396;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.auth-container a:hover {
+  text-decoration: underline;
+}
+
+/* --- Materi List --- */
+.materi-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.materi-item {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  width: 300px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.materi-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.materi-img {
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+.materi-item a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 7px 12px;
+  background: #005f73;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.materi-item a:hover {
+  background: #0a9396;
+}
+
+/* --- Video List --- */
+.video-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.video-item {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  width: 320px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.video-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.video-item iframe {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
 /* --- Responsive --- */
-@media (max-width: 1024px) {
-  .banner { height: 50vh; }
-}
-
-@media (max-width: 768px) {
-  .materi-item, .video-item { width: 80%; }
-  .form-container { width: 80%; padding: 20px; }
-  .video-item iframe { height: 200px; }
-  .banner { height: 40vh; }
-}
-
 @media (max-width: 650px) {
-  .materi-item, .video-item { width: 90%; }
+  .materi-item,
+  .video-item {
+    width: 90%;
+  }
+
+  .video-item iframe {
+    height: 200px;
+  }
 }
 
 @media (max-width: 600px) {
-  section ul { flex-direction: column; align-items: center; }
+  section ul {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
-@media (max-width: 480px) {
-  nav a, .auth-btn { padding: 6px 8px; font-size: 14px; }
-  section ul li { width: 95%; }
-  .contact-info li { padding: 10px; }
-  .banner { height: 30vh; }
-}
