@@ -64,15 +64,15 @@ main {
   padding: 20px;
 }
 
-/* --- Banner --- */
+/* --- Banner Fullscreen Responsif --- */
 .banner {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 0;
-  margin: 0;
+  width: 100vw;          /* selebar viewport */
+  height: 60vh;          /* default tinggi banner */
+  object-fit: cover;      /* isi area tanpa distorsi */
   display: block;
+  border-radius: 0;
   box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  margin: 0 0 20px 0;
 }
 
 /* --- Menu Cepat --- */
@@ -225,59 +225,29 @@ footer {
 }
 
 /* --- Responsive --- */
+@media (max-width: 1024px) {
+  .banner { height: 50vh; }
+}
+
 @media (max-width: 768px) {
-  .materi-item, .video-item {
-    width: 80%;
-  }
-  .form-container iframe {
-    height: 650px;
-  }
-  .banner {
-    height: 300px;
-  }
+  .materi-item, .video-item { width: 80%; }
+  .form-container iframe { height: 650px; }
+  .banner { height: 40vh; }
 }
 
 @media (max-width: 650px) {
-  .materi-item, .video-item {
-    width: 90%;
-  }
-  .video-item iframe {
-    height: 200px;
-  }
+  .materi-item, .video-item { width: 90%; }
+  .video-item iframe { height: 200px; }
 }
 
 @media (max-width: 600px) {
-  section ul {
-    flex-direction: column;
-    align-items: center;
-  }
+  section ul { flex-direction: column; align-items: center; }
 }
 
 @media (max-width: 480px) {
-  nav a, .auth-btn {
-    padding: 6px 8px;
-    font-size: 14px;
-  }
-
-  section ul li {
-    width: 95%;
-  }
-
-  .form-container iframe {
-    height: 550px;
-  }
-
-  .contact-info li {
-    padding: 10px;
-  }
-
-  .banner {
-    height: 200px;
-  }
+  nav a, .auth-btn { padding: 6px 8px; font-size: 14px; }
+  section ul li { width: 95%; }
+  .form-container iframe { height: 550px; }
+  .contact-info li { padding: 10px; }
+  .banner { height: 30vh; }
 }
-
-
-
-
-
-
