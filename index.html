@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Website Pembelajaran Alat Ukur</title>
+  <meta name="description" content="Website pembelajaran alat ukur SMK: materi, video tutorial, dan latihan interaktif untuk memahami dasar-dasar program keahlian.">
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,16 +16,11 @@
       <a href="materi.html">Materi</a>
       <a href="video.html">Video</a>
       <a href="kontak.html">Kontak</a>
-
-      <!-- Spacer untuk push auth ke kanan -->
-      <div class="spacer"></div>
-
-      <!-- Wrapper untuk tombol auth -->
-      <div class="nav-auth"></div>
+      <!-- Tombol Login/Daftar/Logout akan ditambahkan via JS -->
     </nav>
   </header>
 
-  <main>
+  <main id="content">
     <h2>Selamat Datang</h2>
     <p>Website ini berisi materi pembelajaran <b>Dasar-Dasar Program Keahlian</b> tentang alat ukur di SMK.</p>
 
@@ -34,13 +31,16 @@
     <section>
       <h2>Apa yang bisa Anda temukan di sini?</h2>
       <ul>
-        <li><a href="materi.html">📘 Materi Alat Ukur</a></li>
-        <li><a href="video.html">🎥 Video Tutorial</a></li>
-        <li><a href="kontak.html">💬 Kritik & Saran</a></li>
+        <li><a href="materi.html">📘 Materi Alat Ukur</a> – ringkasan materi + link PDF</li>
+        <li><a href="video.html">🎥 Video Tutorial</a> – panduan penggunaan alat ukur</li>
+        <li><a href="kontak.html">💬 Kritik & Saran</a> – bantu kami meningkatkan website ini</li>
       </ul>
     </section>
 
-    <blockquote>"Belajar tanpa praktik bagaikan membaca peta tanpa pernah berjalan."</blockquote>
+    <!-- Quotes -->
+    <blockquote>
+      "Belajar tanpa praktik bagaikan membaca peta tanpa pernah berjalan."
+    </blockquote>
   </main>
 
   <footer>
@@ -48,10 +48,11 @@
     <p><a href="kontak.html">Hubungi Kami</a></p>
   </footer>
 
-  <!-- Firebase Auth -->
+  <!-- 🔥 Firebase SDK & Auth -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCavsla0yBJkRrZ7H4uUePAQPkKnPVYbbo",
@@ -64,43 +65,45 @@
     };
 
     const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
     const auth = getAuth(app);
 
-    const navAuth = document.querySelector(".nav-auth");
+    console.log("✅ Firebase berhasil terhubung!");
+
+    // Tambahkan tombol Login/Daftar/Logout sesuai status login
+    const nav = document.querySelector("nav");
 
     onAuthStateChanged(auth, (user) => {
-      navAuth.innerHTML = ""; // bersihkan dulu
-
       if (user) {
-        // Logout button
+        // User sudah login -> tampilkan Logout
         const logoutBtn = document.createElement("a");
         logoutBtn.href = "#";
         logoutBtn.textContent = "Logout";
-        logoutBtn.className = "auth-btn";
+        logoutBtn.style.marginLeft = "auto";
         logoutBtn.addEventListener("click", async () => {
           await signOut(auth);
           location.reload();
         });
-        navAuth.appendChild(logoutBtn);
+        nav.appendChild(logoutBtn);
       } else {
-        // Login & Daftar
+        // User belum login -> tampilkan Login & Daftar
         const loginLink = document.createElement("a");
         loginLink.href = "login.html";
         loginLink.textContent = "Login";
-        loginLink.className = "auth-btn";
+        loginLink.style.marginLeft = "auto";
 
         const registerLink = document.createElement("a");
         registerLink.href = "register.html";
         registerLink.textContent = "Daftar";
-        registerLink.className = "auth-btn";
 
-        navAuth.appendChild(loginLink);
-        navAuth.appendChild(registerLink);
+        nav.appendChild(loginLink);
+        nav.appendChild(registerLink);
       }
     });
   </script>
 </body>
 </html>
+
 
 
 
