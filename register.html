@@ -3,30 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daftar Akun | LMS Alat Ukur</title>
+  <title>Registrasi</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="auth-container">
-    <h2>Buat Akun Baru</h2>
-    <form id="registerForm">
-      <label>Email:</label>
-      <input type="email" id="email" required>
+  <header>
+    <h1>Daftar Akun</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="materi.html">Materi</a>
+      <a href="video.html">Video</a>
+      <a href="kontak.html">Kontak</a>
+    </nav>
+  </header>
 
-      <label>Password (min 6 karakter):</label>
-      <input type="password" id="password" required>
+  <main>
+    <div class="form-container">
+      <h2>Registrasi Pengguna</h2>
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Masukkan email">
 
-      <button type="submit">Daftar</button>
-    </form>
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Masukkan password">
 
-    <p>Sudah punya akun? <a href="login.html">Login di sini</a></p>
-  </div>
+      <button id="registerBtn">Daftar</button>
 
+      <p>Sudah punya akun? <a href="login.html">Login di sini</a></p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Website Pembelajaran Alat Ukur</p>
+  </footer>
+
+  <!-- Firebase Auth -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
     import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
 
-    // Konfigurasi Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyCavsla0yBJkRrZ7H4uUePAQPkKnPVYbbo",
       authDomain: "lms-ferdianz.firebaseapp.com",
@@ -40,21 +54,21 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    // Listener form register
-    const form = document.getElementById("registerForm");
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+    const registerBtn = document.getElementById("registerBtn");
+
+    registerBtn.addEventListener("click", async () => {
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
 
       try {
         await createUserWithEmailAndPassword(auth, email, password);
-        alert("Akun berhasil dibuat! Silakan login.");
+        alert("Registrasi berhasil!");
         window.location.href = "login.html";
       } catch (error) {
-        alert("Gagal mendaftar: " + error.message);
+        alert("Registrasi gagal: " + error.message);
       }
     });
   </script>
 </body>
 </html>
+
