@@ -14,8 +14,6 @@
       <a href="materi.html" class="active">Materi</a>
       <a href="video.html">Video</a>
       <a href="kontak.html">Kontak</a>
-      <div class="spacer"></div>
-      <div class="nav-auth"></div>
     </nav>
   </header>
 
@@ -89,24 +87,25 @@
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
-    const navAuth = document.querySelector(".nav-auth");
+    const nav = document.querySelector("nav");
 
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        const logoutBtn = document.createElement("a");
-        logoutBtn.href = "#";
+        const logoutBtn = document.createElement("button");
         logoutBtn.textContent = "Logout";
-        logoutBtn.className = "auth-btn";
+        logoutBtn.style.marginLeft = "10px";
         logoutBtn.onclick = async () => {
           await signOut(auth);
+          alert("Anda telah logout.");
           window.location.href = "login.html";
         };
-        navAuth.appendChild(logoutBtn);
+        nav.appendChild(logoutBtn);
       } else {
-        // Jika belum login, langsung redirect ke login
+        alert("Silakan login terlebih dahulu!");
         window.location.href = "login.html";
       }
     });
   </script>
 </body>
 </html>
+
