@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | LMS Alat Ukur</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Login Akun</h2>
+    <form id="loginForm">
+      <label>Email:</label>
+      <input type="email" id="email" required>
+
+      <label>Password:</label>
+      <input type="password" id="password" required>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p>Belum punya akun? <a href="register.html">Daftar di sini</a></p>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
+    // Konfigurasi Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyCavsla0yBJkRrZ7H4uUePAQPkKnPVYbbo",
+      authDomain: "lms-ferdianz.firebaseapp.com",
+      projectId: "lms-ferdianz",
+      storageBucket: "lms-ferdianz.firebasestorage.app",
+      messagingSenderId: "149251617687",
+      appId: "1:149251617687:web:17a480faf6a2436f3a8ad2",
+      measurementId: "G-MY4BP9CD9N"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Listener form login
+    const form = document.getElementById("loginForm");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        alert("Login berhasil!");
+        window.location.href = "materi.html";
+      } catch (error) {
+        alert("Login gagal: " + error.message);
+      }
+    });
+  </script>
+</body>
+</html>
