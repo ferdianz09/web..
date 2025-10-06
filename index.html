@@ -16,7 +16,7 @@
       <a href="materi.html">Materi</a>
       <a href="video.html">Video</a>
       <a href="kontak.html">Kontak</a>
-      <!-- Tombol Login/Daftar/Logout akan ditambahkan via JS -->
+      <div class="spacer"></div> <!-- Push login/logout ke kanan -->
     </nav>
   </header>
 
@@ -52,7 +52,6 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCavsla0yBJkRrZ7H4uUePAQPkKnPVYbbo",
@@ -65,21 +64,21 @@
     };
 
     const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
     const auth = getAuth(app);
 
-    console.log("✅ Firebase berhasil terhubung!");
-
-    // Tambahkan tombol Login/Daftar/Logout sesuai status login
     const nav = document.querySelector("nav");
 
     onAuthStateChanged(auth, (user) => {
+      // Hapus link lama jika ada
+      const existingLinks = nav.querySelectorAll(".auth-link");
+      existingLinks.forEach(el => el.remove());
+
       if (user) {
         // User sudah login -> tampilkan Logout
         const logoutBtn = document.createElement("a");
         logoutBtn.href = "#";
         logoutBtn.textContent = "Logout";
-        logoutBtn.style.marginLeft = "auto";
+        logoutBtn.classList.add("auth-link");
         logoutBtn.addEventListener("click", async () => {
           await signOut(auth);
           location.reload();
@@ -90,11 +89,12 @@
         const loginLink = document.createElement("a");
         loginLink.href = "login.html";
         loginLink.textContent = "Login";
-        loginLink.style.marginLeft = "auto";
+        loginLink.classList.add("auth-link");
 
         const registerLink = document.createElement("a");
         registerLink.href = "register.html";
         registerLink.textContent = "Daftar";
+        registerLink.classList.add("auth-link");
 
         nav.appendChild(loginLink);
         nav.appendChild(registerLink);
@@ -103,6 +103,7 @@
   </script>
 </body>
 </html>
+
 
 
 
