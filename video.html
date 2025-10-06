@@ -3,9 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Pembelajaran</title>
-  <meta name="description" content="Kumpulan video tutorial alat ukur: Fluke Tester, LAN Tester, OPM, OTDR, Multimeter, Oscilloscope.">
+  <title>Video Pembelajaran | LMS Alat Ukur</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    main iframe {
+      width: 100%;
+      max-width: 560px;
+      height: 315px;
+      margin-bottom: 20px;
+    }
+    nav button {
+      cursor: pointer;
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -13,72 +25,93 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="materi.html">Materi</a>
-      <a href="video.html" class="active">Video</a>
+      <a href="video.html">Video</a>
       <a href="kontak.html">Kontak</a>
     </nav>
   </header>
 
-  <main>
-    <h2>🎥 Video Tutorial Alat Ukur</h2>
-    <p>Berikut beberapa video pembelajaran untuk memahami penggunaan alat ukur.</p>
+<main>
+  <h2>🎥 Video Tutorial Alat Ukur</h2>
+  <p>Berikut beberapa video pembelajaran tentang alat ukur:</p>
 
-    <section class="video-list">
+  <section class="video-list">
+    <article class="video-item">
+      <h3>1. FLUKE Tester</h3>
+      <iframe src="https://www.youtube.com/embed/fzm3W5DO1F0" frameborder="0" allowfullscreen></iframe>
+    </article>
 
-      <article class="video-item">
-        <h3>1. 🎥 FLUKE Tester</h3>
-        <p>Penjelasan cara menggunakan Fluke Tester untuk menguji kualitas kabel jaringan.</p>
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/fzm3W5DO1F0" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </article>
+    <article class="video-item">
+      <h3>2. LAN Tester</h3>
+      <iframe src="https://www.youtube.com/embed/dDgWLe81wnE" frameborder="0" allowfullscreen></iframe>
+    </article>
 
-      <article class="video-item">
-        <h3>2. 🎥 LAN Tester</h3>
-        <p>Demonstrasi penggunaan LAN Tester untuk mengecek kabel UTP/STP.</p>
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/dDgWLe81wnE" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </article>
+    <article class="video-item">
+      <h3>3. Optical Power Meter (OPM)</h3>
+      <iframe src="https://www.youtube.com/embed/kovQlRLfEYY" frameborder="0" allowfullscreen></iframe>
+    </article>
 
-      <article class="video-item">
-        <h3>3. 🎥 Optical Power Meter (OPM)</h3>
-        <p>Cara mengukur daya optik pada kabel fiber optik dengan OPM.</p>
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/kovQlRLfEYY" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </article>
+    <article class="video-item">
+      <h3>4. OTDR</h3>
+      <iframe src="https://www.youtube.com/embed/WFD1mCT5AvI" frameborder="0" allowfullscreen></iframe>
+    </article>
 
-      <article class="video-item">
-        <h3>4. 🎥 OTDR</h3>
-        <p>Penggunaan OTDR untuk mendeteksi kerusakan pada kabel fiber optik.</p>
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/WFD1mCT5AvI" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </article>
+    <article class="video-item">
+      <h3>5. Multimeter</h3>
+      <iframe src="https://www.youtube.com/embed/7h5McYNQy98" frameborder="0" allowfullscreen></iframe>
+    </article>
 
-      <article class="video-item">
-        <h3>5. 🎥 Multimeter</h3>
-        <p>Video pengenalan fungsi multimeter digital dan analog.</p>
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/7h5McYNQy98" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </article>
+    <article class="video-item">
+      <h3>6. Oscilloscope</h3>
+      <iframe src="https://www.youtube.com/embed/tWG5x_yM0aM" frameborder="0" allowfullscreen></iframe>
+    </article>
+  </section>
+</main>
 
-      <article class="video-item">
-        <h3>6. 🎥 Osiloskop</h3>
-        <p>Menampilkan bentuk gelombang sinyal listrik menggunakan osiloskop.</p>
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/tWG5x_yM0aM" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </article>
-
-    </section>
-  </main>
 
   <footer>
-    <p>© 2025 Website Pembelajaran Alat Ukur | Dibuat oleh Ferdi</p>
+    <p>© 2025 Website Pembelajaran Alat Ukur</p>
   </footer>
+
+  <!-- 🔐 Firebase Authentication -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCavsla0yBJkRrZ7H4uUePAQPkKnPVYbbo",
+      authDomain: "lms-ferdianz.firebaseapp.com",
+      projectId: "lms-ferdianz",
+      storageBucket: "lms-ferdianz.firebasestorage.app",
+      messagingSenderId: "149251617687",
+      appId: "1:149251617687:web:17a480faf6a2436f3a8ad2",
+      measurementId: "G-MY4BP9CD9N"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const nav = document.querySelector("nav");
+
+    // Cek login
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        alert("Silakan login terlebih dahulu untuk melihat video pembelajaran!");
+        window.location.href = "login.html";
+      } else {
+        // Tambahkan tombol Logout
+        const logoutBtn = document.createElement("button");
+        logoutBtn.textContent = "Logout";
+        logoutBtn.onclick = async () => {
+          await signOut(auth);
+          alert("Anda telah logout.");
+          window.location.href = "login.html";
+        };
+        nav.appendChild(logoutBtn);
+      }
+    });
+  </script>
 </body>
 </html>
+
 
 
