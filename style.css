@@ -19,16 +19,16 @@ header h1 {
   margin: 0 0 10px 0;
 }
 
-/* Header Flex untuk Nav */
+/* --- Header Nav Flex --- */
 header nav {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   gap: 10px;
 }
 
-/* Spacer untuk push login/logout ke kanan */
+/* Spacer untuk push auth ke kanan */
 nav .spacer {
   flex: 1;
 }
@@ -45,18 +45,17 @@ nav a:hover {
   background: #0a9396;
 }
 
-/* --- Logout Button --- */
-nav button {
+/* Tombol login/daftar/Logout */
+.auth-btn {
   background: #0a9396;
-  color: white;
-  border: none;
-  padding: 5px 10px;
+  color: #fff;
+  padding: 6px 12px;
   border-radius: 5px;
-  cursor: pointer;
+  text-decoration: none;
   font-weight: bold;
 }
 
-nav button:hover {
+.auth-btn:hover {
   background: #005f73;
 }
 
@@ -68,14 +67,15 @@ main {
 /* --- Banner --- */
 .banner {
   width: 100%;
-  max-height: 300px;
+  height: 400px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 0;
+  margin: 0;
+  display: block;
   box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-  margin: 20px 0;
 }
 
-/* --- Menu Cepat (Home) --- */
+/* --- Menu Cepat --- */
 section ul {
   display: flex;
   flex-wrap: wrap;
@@ -106,85 +106,19 @@ section ul li:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* --- Banner & Materi/Video Headings --- */
-main h2, main p {
+/* --- Headings & Quotes --- */
+main h2, main p, blockquote {
   text-align: center;
 }
 
-/* --- Quote / Motto --- */
 blockquote {
-  text-align: center;
   font-style: italic;
   margin: 30px 20px;
   quotes: "“" "”" "‘" "’";
 }
 
-/* --- Auth / Login & Registrasi --- */
-.auth-container {
-  max-width: 400px;
-  margin: 40px auto;
-  background: #fff;
-  padding: 25px 30px;
-  border-radius: 10px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-}
-
-.auth-container h2 {
-  text-align: center;
-  color: #005f73;
-  margin-bottom: 20px;
-}
-
-.auth-container label {
-  display: block;
-  font-weight: bold;
-  margin-top: 10px;
-  color: #333;
-}
-
-.auth-container input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.auth-container button {
-  width: 100%;
-  background: #005f73;
-  color: white;
-  border: none;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.auth-container button:hover {
-  background: #0a9396;
-}
-
-.auth-container p {
-  text-align: center;
-  margin-top: 15px;
-}
-
-.auth-container a {
-  color: #0a9396;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.auth-container a:hover {
-  text-decoration: underline;
-}
-
-/* --- Materi List --- */
-.materi-list {
+/* --- Materi & Video List --- */
+.materi-list, .video-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -192,7 +126,7 @@ blockquote {
   padding: 20px 0;
 }
 
-.materi-item {
+.materi-item, .video-item {
   background: #fff;
   border-radius: 10px;
   padding: 15px;
@@ -202,19 +136,12 @@ blockquote {
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.materi-item:hover {
+.materi-item:hover, .video-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-.materi-img {
-  width: 100%;
-  height: auto;
-  margin-top: 10px;
-  border-radius: 8px;
-}
-
-.materi-item a {
+.materi-item a, .video-item a {
   display: inline-block;
   margin-top: 10px;
   padding: 7px 12px;
@@ -225,32 +152,8 @@ blockquote {
   font-weight: bold;
 }
 
-.materi-item a:hover {
+.materi-item a:hover, .video-item a:hover {
   background: #0a9396;
-}
-
-/* --- Video List --- */
-.video-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px 0;
-}
-
-.video-item {
-  background: #fff;
-  border-radius: 10px;
-  padding: 15px;
-  width: 320px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.video-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .video-item iframe {
@@ -260,7 +163,7 @@ blockquote {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* --- Kontak Section --- */
+/* --- Kontak --- */
 .contact-info {
   list-style: none;
   padding: 0;
@@ -294,7 +197,7 @@ blockquote {
   text-decoration: underline;
 }
 
-/* --- Form Container --- */
+/* --- Form --- */
 .form-container {
   max-width: 700px;
   margin: 20px auto;
@@ -323,22 +226,21 @@ footer {
 
 /* --- Responsive --- */
 @media (max-width: 768px) {
-  .materi-item,
-  .video-item {
+  .materi-item, .video-item {
     width: 80%;
   }
-
   .form-container iframe {
     height: 650px;
+  }
+  .banner {
+    height: 300px;
   }
 }
 
 @media (max-width: 650px) {
-  .materi-item,
-  .video-item {
+  .materi-item, .video-item {
     width: 90%;
   }
-
   .video-item iframe {
     height: 200px;
   }
@@ -352,7 +254,7 @@ footer {
 }
 
 @media (max-width: 480px) {
-  nav a {
+  nav a, .auth-btn {
     padding: 6px 8px;
     font-size: 14px;
   }
@@ -368,7 +270,12 @@ footer {
   .contact-info li {
     padding: 10px;
   }
+
+  .banner {
+    height: 200px;
+  }
 }
+
 
 
 
