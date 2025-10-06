@@ -39,9 +39,11 @@ nav a {
   text-decoration: none;
   padding: 6px 12px;
   border-radius: 5px;
+  transition: background 0.3s;
 }
 
-nav a:hover {
+nav a:hover,
+nav a.active {
   background: #0a9396;
 }
 
@@ -53,22 +55,25 @@ nav a:hover {
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
+  transition: background 0.3s;
 }
 
 .auth-btn:hover {
   background: #005f73;
+  cursor: pointer;
 }
 
 /* --- Main Content --- */
 main {
   padding: 20px;
+  min-height: 60vh;
 }
 
 /* --- Banner Fullscreen Responsif --- */
 .banner {
-  width: 100vw;          /* selebar viewport */
-  height: 60vh;          /* default tinggi banner */
-  object-fit: cover;      /* isi area tanpa distorsi */
+  width: 100vw;
+  height: 60vh;
+  object-fit: cover;
   display: block;
   border-radius: 0;
   box-shadow: 0 3px 8px rgba(0,0,0,0.2);
@@ -150,6 +155,7 @@ blockquote {
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
+  transition: background 0.3s;
 }
 
 .materi-item a:hover, .video-item a:hover {
@@ -197,23 +203,61 @@ blockquote {
   text-decoration: underline;
 }
 
-/* --- Form --- */
+/* --- Form (Login & Registrasi) --- */
 .form-container {
-  max-width: 700px;
-  margin: 20px auto;
-  padding: 15px;
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 25px;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   background: #fff;
   text-align: center;
 }
 
-.form-container iframe {
-  width: 100%;
-  height: 800px;
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.form-container h2 {
+  margin-bottom: 20px;
+  color: #005f73;
+}
+
+.form-container input[type="email"],
+.form-container input[type="password"],
+.form-container input[type="text"] {
+  width: 90%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.form-container input:focus {
+  border-color: #0a9396;
+  outline: none;
+  box-shadow: 0 0 5px rgba(10,147,150,0.4);
+}
+
+.form-container button.auth-btn {
+  width: 50%;
+  padding: 12px;
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.form-container p {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.form-container a {
+  color: #0a9396;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.form-container a:hover {
+  text-decoration: underline;
 }
 
 /* --- Footer --- */
@@ -231,13 +275,13 @@ footer {
 
 @media (max-width: 768px) {
   .materi-item, .video-item { width: 80%; }
-  .form-container iframe { height: 650px; }
+  .form-container { width: 80%; padding: 20px; }
+  .video-item iframe { height: 200px; }
   .banner { height: 40vh; }
 }
 
 @media (max-width: 650px) {
   .materi-item, .video-item { width: 90%; }
-  .video-item iframe { height: 200px; }
 }
 
 @media (max-width: 600px) {
@@ -247,7 +291,6 @@ footer {
 @media (max-width: 480px) {
   nav a, .auth-btn { padding: 6px 8px; font-size: 14px; }
   section ul li { width: 95%; }
-  .form-container iframe { height: 550px; }
   .contact-info li { padding: 10px; }
   .banner { height: 30vh; }
 }
