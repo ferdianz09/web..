@@ -5,11 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Materi Pembelajaran</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .user-info {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      color: #005f73;
+    }
+
+    .logout-btn {
+      color: #ae2012;
+      text-decoration: none;
+      font-weight: bold;
+      border: 1px solid #ae2012;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .logout-btn:hover {
+      background-color: #ae2012;
+      color: #fff;
+    }
+
+    .materi-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .materi-item {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 15px;
+      text-align: center;
+    }
+
+    .materi-img {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>Materi Alat Ukur</h1>
-    <nav>
+    <nav id="navbar">
       <a href="index.html">Home</a>
       <a href="materi.html" class="active">Materi</a>
       <a href="video.html">Video</a>
@@ -87,18 +141,25 @@
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
-    const nav = document.querySelector("nav");
+    const nav = document.getElementById("navbar");
 
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        const logoutBtn = document.createElement("button");
+        const userInfo = document.createElement("div");
+        userInfo.classList.add("user-info");
+        userInfo.innerHTML = `👤 ${user.displayName || user.email}`;
+
+        const logoutBtn = document.createElement("a");
+        logoutBtn.href = "#";
         logoutBtn.textContent = "Logout";
-        logoutBtn.style.marginLeft = "10px";
-        logoutBtn.onclick = async () => {
+        logoutBtn.classList.add("logout-btn");
+        logoutBtn.addEventListener("click", async () => {
           await signOut(auth);
           alert("Anda telah logout.");
           window.location.href = "login.html";
-        };
+        });
+
+        nav.appendChild(userInfo);
         nav.appendChild(logoutBtn);
       } else {
         alert("Silakan login terlebih dahulu!");
@@ -108,5 +169,6 @@
   </script>
 </body>
 </html>
+
 
 
