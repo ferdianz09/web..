@@ -104,68 +104,103 @@
   </footer>
 
   <!-- 🔥 Firebase SDK & Auth -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCavsla0yBJkRrZ7H4uUePAQPkKnPVYbbo",
-      authDomain: "lms-ferdianz.firebaseapp.com",
-      projectId: "lms-ferdianz",
-      storageBucket: "lms-ferdianz.firebasestorage.app",
-      messagingSenderId: "149251617687",
-      appId: "1:149251617687:web:17a480faf6a2436f3a8ad2",
-      measurementId: "G-MY4BP9CD9N"
-    };
+  const firebaseConfig = {
+    apiKey: "AIzaSyCavsla0yBJkRrZ7H4uUePAQPkKnPVYbbo",
+    authDomain: "lms-ferdianz.firebaseapp.com",
+    projectId: "lms-ferdianz",
+    storageBucket: "lms-ferdianz.firebasestorage.app",
+    messagingSenderId: "149251617687",
+    appId: "1:149251617687:web:17a480faf6a2436f3a8ad2",
+    measurementId: "G-MY4BP9CD9N"
+  };
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const nav = document.querySelector("nav");
 
-    const nav = document.getElementById("navbar");
+  onAuthStateChanged(auth, (user) => {
+    const existingAuth = nav.querySelectorAll(".auth-section");
+    existingAuth.forEach(el => el.remove());
 
-    onAuthStateChanged(auth, (user) => {
-      // Bersihkan elemen lama agar tidak dobel
-      const oldControls = nav.querySelectorAll(".user-info, .auth-link, .logout-btn");
-      oldControls.forEach(el => el.remove());
+    if (user) {
+      const userName = user.displayName || user.email.split("@")[0];
+      const authSection = document.createElement("div");
+      authSection.className = "auth-section";
 
-      if (user) {
-        // ✅ User login → tampilkan nama dan tombol logout
-        const userInfo = document.createElement("div");
-        userInfo.classList.add("user-info");
-        userInfo.textContent = `👤 ${user.displayName || user.email.split("@")[0]}`;
+      const profileIcon = document.createElement("span");
+      profileIcon.textContent = "👤";
+      profileIcon.className = "profile-icon";
 
-        const logoutBtn = document.createElement("a");
-        logoutBtn.href = "#";
-        logoutBtn.textContent = "Logout";
-        logoutBtn.classList.add("logout-btn");
+      const nameSpan = document.createElement("span");
+      nameSpan.textContent = userName;
+      nameSpan.className = "user-name";
 
-        logoutBtn.addEventListener("click", async (e) => {
-          e.preventDefault();
-          await signOut(auth);
-          window.location.href = "login.html";
-        });
+      const logoutBtn = document.createElement("a");
+      logoutBtn.href = "#";
+      logoutBtn.textContent = "Logout";
+      logoutBtn.className = "auth-btn";
+      logoutBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        await signOut(auth);
+        alert("Anda telah logout.");
+        window.location.href = "login.html";
+      });
 
-        nav.appendChild(userInfo);
-        nav.appendChild(logoutBtn);
-      } else {
-        // 🚪 Belum login → tampilkan tombol Login dan Daftar
-        const loginLink = document.createElement("a");
-        loginLink.href = "login.html";
-        loginLink.textContent = "Login";
-        loginLink.classList.add("auth-link");
+      authSection.appendChild(profileIcon);
+      authSection.appendChild(nameSpan);
+      authSection.appendChild(logoutBtn);
+      nav.appendChild(authSection);
+    } else {
+      const loginBtn = document.createElement("a");
+      loginBtn.href = "login.html";
+      loginBtn.textContent = "Login";
+      loginBtn.className = "auth-btn";
+      nav.appendChild(loginBtn);
+    }
+  });
+</script>
 
-        const registerLink = document.createElement("a");
-        registerLink.href = "register.html";
-        registerLink.textContent = "Daftar";
-        registerLink.classList.add("auth-link");
+<style>
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
 
-        nav.appendChild(loginLink);
-        nav.appendChild(registerLink);
-      }
-    });
-  </script>
-</body>
-</html>
+  .auth-section {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 10px;
+  }
+
+  .profile-icon {
+    font-size: 1.3em;
+  }
+
+  .user-name {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .auth-btn {
+    background-color: #d9534f;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .auth-btn:hover {
+    background-color: #c9302c;
+  }
+</style>
+
 
 
 
