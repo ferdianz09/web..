@@ -79,33 +79,89 @@
 
     // 🔒 Cek status login pengguna
     onAuthStateChanged(auth, (user) => {
-      // Bersihkan tombol sebelumnya agar tidak dobel
-      const existingAuthLinks = nav.querySelectorAll(".auth-btn");
-      existingAuthLinks.forEach(el => el.remove());
+      // Bersihkan elemen auth sebelumnya
+      const existingAuth = nav.querySelectorAll(".auth-section");
+      existingAuth.forEach(el => el.remove());
 
       if (user) {
-        // ✅ Sudah login → tampilkan tombol Logout
-        const logoutLink = document.createElement("a");
-        logoutLink.textContent = "Logout";
-        logoutLink.href = "#";
-        logoutLink.className = "auth-btn";
-        logoutLink.style.marginLeft = "auto";
-        logoutLink.addEventListener("click", async (e) => {
+        // ✅ Tampilkan nama & ikon profil + tombol logout
+        const userName = user.displayName || user.email.split("@")[0]; // fallback ke email
+
+        const authSection = document.createElement("div");
+        authSection.className = "auth-section";
+
+        const profileIcon = document.createElement("span");
+        profileIcon.textContent = "👤";
+        profileIcon.className = "profile-icon";
+
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = userName;
+        nameSpan.className = "user-name";
+
+        const logoutBtn = document.createElement("a");
+        logoutBtn.href = "#";
+        logoutBtn.textContent = "Logout";
+        logoutBtn.className = "auth-btn";
+        logoutBtn.addEventListener("click", async (e) => {
           e.preventDefault();
           await signOut(auth);
           alert("Anda telah logout.");
           window.location.href = "login.html";
         });
-        nav.appendChild(logoutLink);
+
+        authSection.appendChild(profileIcon);
+        authSection.appendChild(nameSpan);
+        authSection.appendChild(logoutBtn);
+        nav.appendChild(authSection);
+
       } else {
-        // 🚫 Belum login → arahkan ke halaman login
+        // 🚫 Belum login → arahkan ke login
         alert("Silakan login terlebih dahulu untuk mengakses video pembelajaran!");
         window.location.href = "login.html";
       }
     });
   </script>
+
+  <style>
+    /* Tambahan CSS agar rapi */
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .auth-section {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      gap: 10px;
+    }
+
+    .profile-icon {
+      font-size: 1.3em;
+    }
+
+    .user-name {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .auth-btn {
+      background-color: #d9534f;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .auth-btn:hover {
+      background-color: #c9302c;
+    }
+  </style>
 </body>
 </html>
+
 
 
 
