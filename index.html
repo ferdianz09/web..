@@ -39,6 +39,30 @@
       background-color: #ae2012;
       color: #fff;
     }
+
+    .auth-link {
+      color: #005f73;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .auth-link:hover {
+      text-decoration: underline;
+    }
+
+    .banner {
+      display: block;
+      max-width: 100%;
+      border-radius: 10px;
+      margin: 15px auto;
+    }
+
+    blockquote {
+      font-style: italic;
+      text-align: center;
+      margin-top: 20px;
+      color: #555;
+    }
   </style>
 </head>
 <body>
@@ -69,7 +93,6 @@
       </ul>
     </section>
 
-    <!-- Quotes -->
     <blockquote>
       "Belajar tanpa praktik bagaikan membaca peta tanpa pernah berjalan."
     </blockquote>
@@ -101,30 +124,31 @@
     const nav = document.getElementById("navbar");
 
     onAuthStateChanged(auth, (user) => {
-      // Hapus tombol lama agar tidak dobel saat reload
-      const oldControls = nav.querySelectorAll(".user-info, .auth-link");
+      // Bersihkan elemen lama agar tidak dobel
+      const oldControls = nav.querySelectorAll(".user-info, .auth-link, .logout-btn");
       oldControls.forEach(el => el.remove());
 
       if (user) {
-        // ✅ Jika user login, tampilkan nama + tombol logout
+        // ✅ User login → tampilkan nama dan tombol logout
         const userInfo = document.createElement("div");
         userInfo.classList.add("user-info");
-        userInfo.innerHTML = `👤 ${user.displayName || user.email}`;
+        userInfo.textContent = `👤 ${user.displayName || user.email.split("@")[0]}`;
 
         const logoutBtn = document.createElement("a");
         logoutBtn.href = "#";
         logoutBtn.textContent = "Logout";
         logoutBtn.classList.add("logout-btn");
-        logoutBtn.addEventListener("click", async () => {
+
+        logoutBtn.addEventListener("click", async (e) => {
+          e.preventDefault();
           await signOut(auth);
-          location.reload();
+          window.location.href = "login.html";
         });
 
         nav.appendChild(userInfo);
         nav.appendChild(logoutBtn);
-
       } else {
-        // 🚪 Jika belum login, tampilkan Login dan Daftar
+        // 🚪 Belum login → tampilkan tombol Login dan Daftar
         const loginLink = document.createElement("a");
         loginLink.href = "login.html";
         loginLink.textContent = "Login";
@@ -142,6 +166,7 @@
   </script>
 </body>
 </html>
+
 
 
 
