@@ -7,16 +7,48 @@
   <meta name="description" content="Website pembelajaran alat ukur SMK: materi, video tutorial, dan latihan interaktif untuk memahami dasar-dasar program keahlian.">
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
+  <style>
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .user-info {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      color: #005f73;
+    }
+
+    .logout-btn {
+      color: #ae2012;
+      text-decoration: none;
+      font-weight: bold;
+      border: 1px solid #ae2012;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .logout-btn:hover {
+      background-color: #ae2012;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>Website Pembelajaran Alat Ukur</h1>
-    <nav>
+    <nav id="navbar">
       <a href="index.html">Home</a>
       <a href="materi.html">Materi</a>
       <a href="video.html">Video</a>
       <a href="kontak.html">Kontak</a>
-      <!-- Tombol Login/Daftar/Logout akan ditambahkan via JS -->
     </nav>
   </header>
 
@@ -52,7 +84,6 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCavsla0yBJkRrZ7H4uUePAQPkKnPVYbbo",
@@ -65,36 +96,44 @@
     };
 
     const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
     const auth = getAuth(app);
 
-    console.log("✅ Firebase berhasil terhubung!");
-
-    // Tambahkan tombol Login/Daftar/Logout sesuai status login
-    const nav = document.querySelector("nav");
+    const nav = document.getElementById("navbar");
 
     onAuthStateChanged(auth, (user) => {
+      // Hapus tombol lama agar tidak dobel saat reload
+      const oldControls = nav.querySelectorAll(".user-info, .auth-link");
+      oldControls.forEach(el => el.remove());
+
       if (user) {
-        // User sudah login -> tampilkan Logout
+        // ✅ Jika user login, tampilkan nama + tombol logout
+        const userInfo = document.createElement("div");
+        userInfo.classList.add("user-info");
+        userInfo.innerHTML = `👤 ${user.displayName || user.email}`;
+
         const logoutBtn = document.createElement("a");
         logoutBtn.href = "#";
         logoutBtn.textContent = "Logout";
-        logoutBtn.style.marginLeft = "auto";
+        logoutBtn.classList.add("logout-btn");
         logoutBtn.addEventListener("click", async () => {
           await signOut(auth);
           location.reload();
         });
+
+        nav.appendChild(userInfo);
         nav.appendChild(logoutBtn);
+
       } else {
-        // User belum login -> tampilkan Login & Daftar
+        // 🚪 Jika belum login, tampilkan Login dan Daftar
         const loginLink = document.createElement("a");
         loginLink.href = "login.html";
         loginLink.textContent = "Login";
-        loginLink.style.marginLeft = "auto";
+        loginLink.classList.add("auth-link");
 
         const registerLink = document.createElement("a");
         registerLink.href = "register.html";
         registerLink.textContent = "Daftar";
+        registerLink.classList.add("auth-link");
 
         nav.appendChild(loginLink);
         nav.appendChild(registerLink);
@@ -103,6 +142,7 @@
   </script>
 </body>
 </html>
+
 
 
 
