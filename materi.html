@@ -125,50 +125,100 @@
   </footer>
 
   <!-- 🔒 Firebase Auth -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCavsla0yBJkRrZ7H4uUePAQPkKnPVYbbo",
-      authDomain: "lms-ferdianz.firebaseapp.com",
-      projectId: "lms-ferdianz",
-      storageBucket: "lms-ferdianz.firebasestorage.app",
-      messagingSenderId: "149251617687",
-      appId: "1:149251617687:web:17a480faf6a2436f3a8ad2",
-      measurementId: "G-MY4BP9CD9N"
-    };
+  const firebaseConfig = {
+    apiKey: "AIzaSyCavsla0yBJkRrZ7H4uUePAQPkKnPVYbbo",
+    authDomain: "lms-ferdianz.firebaseapp.com",
+    projectId: "lms-ferdianz",
+    storageBucket: "lms-ferdianz.firebasestorage.app",
+    messagingSenderId: "149251617687",
+    appId: "1:149251617687:web:17a480faf6a2436f3a8ad2",
+    measurementId: "G-MY4BP9CD9N"
+  };
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const nav = document.getElementById("navbar");
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const nav = document.querySelector("nav");
 
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const userInfo = document.createElement("div");
-        userInfo.classList.add("user-info");
-        userInfo.innerHTML = `👤 ${user.displayName || user.email}`;
+  onAuthStateChanged(auth, (user) => {
+    const existingAuth = nav.querySelectorAll(".auth-section");
+    existingAuth.forEach(el => el.remove());
 
-        const logoutBtn = document.createElement("a");
-        logoutBtn.href = "#";
-        logoutBtn.textContent = "Logout";
-        logoutBtn.classList.add("logout-btn");
-        logoutBtn.addEventListener("click", async () => {
-          await signOut(auth);
-          alert("Anda telah logout.");
-          window.location.href = "login.html";
-        });
+    if (user) {
+      const userName = user.displayName || user.email.split("@")[0];
+      const authSection = document.createElement("div");
+      authSection.className = "auth-section";
 
-        nav.appendChild(userInfo);
-        nav.appendChild(logoutBtn);
-      } else {
-        alert("Silakan login terlebih dahulu!");
+      const profileIcon = document.createElement("span");
+      profileIcon.textContent = "👤";
+      profileIcon.className = "profile-icon";
+
+      const nameSpan = document.createElement("span");
+      nameSpan.textContent = userName;
+      nameSpan.className = "user-name";
+
+      const logoutBtn = document.createElement("a");
+      logoutBtn.href = "#";
+      logoutBtn.textContent = "Logout";
+      logoutBtn.className = "auth-btn";
+      logoutBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        await signOut(auth);
+        alert("Anda telah logout.");
         window.location.href = "login.html";
-      }
-    });
-  </script>
-</body>
-</html>
+      });
+
+      authSection.appendChild(profileIcon);
+      authSection.appendChild(nameSpan);
+      authSection.appendChild(logoutBtn);
+      nav.appendChild(authSection);
+    } else {
+      alert("Silakan login terlebih dahulu!");
+      window.location.href = "login.html";
+    }
+  });
+</script>
+
+<style>
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .auth-section {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 10px;
+  }
+
+  .profile-icon {
+    font-size: 1.3em;
+  }
+
+  .user-name {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .auth-btn {
+    background-color: #d9534f;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .auth-btn:hover {
+    background-color: #c9302c;
+  }
+</style>
+
 
 
 
