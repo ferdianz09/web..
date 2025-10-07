@@ -6,74 +6,23 @@
   <title>Kontak | LMS Alat Ukur</title>
   <meta name="description" content="Hubungi developer Website Pembelajaran Alat Ukur melalui email, WhatsApp, atau isi formulir kritik dan saran.">
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* --- Kontak & Form --- */
-    .contact-info {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-
-    .contact-info li {
-      background: #fff;
-      padding: 15px 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      font-weight: bold;
-      text-align: center;
-    }
-
-    .contact-info a {
-      color: #0a9396;
-      text-decoration: none;
-    }
-
-    .contact-info a:hover {
-      text-decoration: underline;
-    }
-
-    .form-container {
-      max-width: 600px;
-      margin: 0 auto 40px auto;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .form-container iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
-    }
-
-    @media (max-width: 650px) {
-      .contact-info {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .form-container iframe {
-        height: 600px;
-      }
-    }
-  </style>
 </head>
 <body>
   <header>
-    <h1>Kontak Developer</h1>
+    <div class="logo">LMS Alat Ukur</div>
     <nav>
       <a href="index.html">Home</a>
       <a href="materi.html">Materi</a>
       <a href="video.html">Video</a>
       <a href="kontak.html" class="active">Kontak</a>
     </nav>
+    <div class="user-info">
+      <span id="userName"></span>
+      <button id="logoutBtn">Logout</button>
+    </div>
   </header>
 
-  <main>
+  <main class="content">
     <h2>📬 Hubungi Kami</h2>
     <ul class="contact-info">
       <li>📧 Email: <a href="mailto:ferdiantoni.2024@student.uny.ac.id">ferdiantoni.2024@student.uny.ac.id</a></li>
@@ -81,7 +30,7 @@
     </ul>
 
     <h2>📝 Kritik & Saran</h2>
-    <p>Kami sangat menghargai masukan Anda. Silakan isi form berikut agar website ini bisa lebih baik ke depannya.</p>
+    <p style="text-align:center;">Kami sangat menghargai masukan Anda. Silakan isi formulir berikut agar website ini bisa lebih baik ke depannya.</p>
     
     <div class="form-container">
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeqq-VHwEzhRysB3g0JbZze8wkldXIfTmU-VxsJ4unZgl82rA/viewform?usp=sf_link"
@@ -99,8 +48,42 @@
   <footer>
     <p>© 2025 Website LMS Pembelajaran Alat Ukur | Dibuat oleh Ferdi Antoni</p>
   </footer>
+
+  <!-- Firebase Auth -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCavsla0yBJkRrZ7H4uUePAQPkKnPVYbbo",
+      authDomain: "lms-ferdianz.firebaseapp.com",
+      projectId: "lms-ferdianz",
+      storageBucket: "lms-ferdianz.firebasestorage.app",
+      messagingSenderId: "149251617687",
+      appId: "1:149251617687:web:17a480faf6a2436f3a8ad2",
+      measurementId: "G-MY4BP9CD9N"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const userNameEl = document.getElementById("userName");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const displayName = user.displayName || user.email.split('@')[0];
+        userNameEl.textContent = `👤 ${displayName}`;
+      } else {
+        userNameEl.textContent = "";
+      }
+    });
+
+    logoutBtn.addEventListener("click", () => {
+      signOut(auth).then(() => {
+        window.location.href = "login.html";
+      });
+    });
+  </script>
 </body>
 </html>
-
-
-
