@@ -14,8 +14,6 @@
       <a href="materi.html">Materi</a>
       <a href="video.html" class="active">Video</a>
       <a href="kontak.html">Kontak</a>
-      <div class="spacer"></div>
-      <div class="nav-auth"></div>
     </nav>
   </header>
 
@@ -28,22 +26,27 @@
         <h3>1. FLUKE Tester</h3>
         <iframe src="https://www.youtube.com/embed/fzm3W5DO1F0" frameborder="0" allowfullscreen></iframe>
       </article>
+
       <article class="video-item">
         <h3>2. LAN Tester</h3>
         <iframe src="https://www.youtube.com/embed/dDgWLe81wnE" frameborder="0" allowfullscreen></iframe>
       </article>
+
       <article class="video-item">
         <h3>3. Optical Power Meter (OPM)</h3>
         <iframe src="https://www.youtube.com/embed/kovQlRLfEYY" frameborder="0" allowfullscreen></iframe>
       </article>
+
       <article class="video-item">
         <h3>4. OTDR</h3>
         <iframe src="https://www.youtube.com/embed/WFD1mCT5AvI" frameborder="0" allowfullscreen></iframe>
       </article>
+
       <article class="video-item">
         <h3>5. Multimeter</h3>
         <iframe src="https://www.youtube.com/embed/7h5McYNQy98" frameborder="0" allowfullscreen></iframe>
       </article>
+
       <article class="video-item">
         <h3>6. Oscilloscope</h3>
         <iframe src="https://www.youtube.com/embed/tWG5x_yM0aM" frameborder="0" allowfullscreen></iframe>
@@ -72,30 +75,38 @@
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const nav = document.querySelector("nav");
 
-    const navAuthDiv = document.querySelector(".nav-auth");
-
+    // 🔒 Cek status login pengguna
     onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        alert("Silakan login terlebih dahulu untuk melihat video pembelajaran!");
-        window.location.href = "login.html";
-      } else {
+      // Bersihkan tombol sebelumnya agar tidak dobel
+      const existingAuthLinks = nav.querySelectorAll(".auth-btn");
+      existingAuthLinks.forEach(el => el.remove());
+
+      if (user) {
+        // ✅ Sudah login → tampilkan tombol Logout
         const logoutLink = document.createElement("a");
         logoutLink.textContent = "Logout";
         logoutLink.href = "#";
         logoutLink.className = "auth-btn";
-        logoutLink.onclick = async (e) => {
+        logoutLink.style.marginLeft = "auto";
+        logoutLink.addEventListener("click", async (e) => {
           e.preventDefault();
           await signOut(auth);
           alert("Anda telah logout.");
           window.location.href = "login.html";
-        };
-        navAuthDiv.appendChild(logoutLink);
+        });
+        nav.appendChild(logoutLink);
+      } else {
+        // 🚫 Belum login → arahkan ke halaman login
+        alert("Silakan login terlebih dahulu untuk mengakses video pembelajaran!");
+        window.location.href = "login.html";
       }
     });
   </script>
 </body>
 </html>
+
 
 
 
