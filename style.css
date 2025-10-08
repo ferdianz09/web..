@@ -320,23 +320,61 @@ main blockquote {
 nav {
   position: sticky;
   top: 0;
-  z-index: 1000; /* supaya selalu di atas elemen lain */
-  background-color: #ffffff; /* warna latar navbar */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* sedikit bayangan */
+  z-index: 1000; /* supaya di atas semua elemen */
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Opsional: tambahkan efek saat scroll */
+/* Tautan menu */
 nav a {
-  color: #333;
+  color: #005f73;
   text-decoration: none;
-  padding: 10px 15px;
-  display: inline-block;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: 0.3s;
 }
 
 nav a:hover {
-  background-color: #f2f2f2;
-  border-radius: 8px;
+  background-color: #e0f2f1;
 }
+
+/* Bagian login/user */
+.auth-section {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 10px;
+}
+
+.profile-icon {
+  font-size: 1.3em;
+}
+
+.user-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.auth-btn {
+  background-color: #d9534f;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.auth-btn:hover {
+  background-color: #c9302c;
+}
+
 
 /* --- Responsive --- */
 @media (max-width: 650px) {
