@@ -1,15 +1,160 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Pembelajaran | LMS Alat Ukur</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video | Website Pembelajaran Alat Ukur</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ====== HEADER & NAVBAR ====== */
+    header {
+      background-color: #0a9396;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      border-bottom: 4px solid #94d2bd;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #ffdd57;
+    }
+
+    .auth-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .profile-icon {
+      font-size: 1.3em;
+    }
+
+    .user-name {
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .auth-btn {
+      background-color: #d9534f;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .auth-btn:hover {
+      background-color: #c9302c;
+    }
+
+    /* ====== KONTEN UTAMA ====== */
+    main {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #005f73;
+      margin-bottom: 20px;
+    }
+
+    .video-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 25px;
+      justify-items: center;
+    }
+
+    .video-item {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .video-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .video-item h3 {
+      color: #0a9396;
+      margin-bottom: 8px;
+    }
+
+    .video-item iframe {
+      width: 100%;
+      height: 220px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      background-color: #005f73;
+      color: white;
+      padding: 12px 0;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .video-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+      }
+      .auth-section {
+        position: static;
+        transform: none;
+        justify-content: center;
+        margin-top: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>Video Pembelajaran</h1>
-    <nav>
+    <nav id="navbar">
       <a href="index.html">Home</a>
       <a href="materi.html">Materi</a>
       <a href="video.html" class="active">Video</a>
@@ -18,47 +163,47 @@
   </header>
 
   <main>
-    <h2>🎥 Video Tutorial Alat Ukur</h2>
-    <p>Berikut beberapa video pembelajaran tentang alat ukur:</p>
+    <h2>🎥 Daftar Video Pembelajaran Alat Ukur</h2>
+    <p>Tonton video berikut untuk memahami penggunaan alat ukur secara praktis.</p>
 
     <section class="video-list">
       <article class="video-item">
-        <h3>1. FLUKE Tester</h3>
-        <iframe src="https://www.youtube.com/embed/fzm3W5DO1F0" frameborder="0" allowfullscreen></iframe>
+        <h3>🔌 FLUKE Tester</h3>
+        <iframe src="https://www.youtube.com/embed/fzm3W5DO1F0" allowfullscreen></iframe>
       </article>
 
       <article class="video-item">
-        <h3>2. LAN Tester</h3>
-        <iframe src="https://www.youtube.com/embed/dDgWLe81wnE" frameborder="0" allowfullscreen></iframe>
+        <h3>🔧 LAN Tester</h3>
+        <iframe src="https://www.youtube.com/embed/dDgWLe81wnE" allowfullscreen></iframe>
       </article>
 
       <article class="video-item">
-        <h3>3. Optical Power Meter (OPM)</h3>
-        <iframe src="https://www.youtube.com/embed/kovQlRLfEYY" frameborder="0" allowfullscreen></iframe>
+        <h3>💡 Optical Power Meter (OPM)</h3>
+        <iframe src="https://www.youtube.com/embed/kovQlRLfEYY" allowfullscreen></iframe>
       </article>
 
       <article class="video-item">
-        <h3>4. OTDR</h3>
-        <iframe src="https://www.youtube.com/embed/WFD1mCT5AvI" frameborder="0" allowfullscreen></iframe>
+        <h3>🔎 OTDR</h3>
+        <iframe src="https://www.youtube.com/embed/WFD1mCT5AvI" allowfullscreen></iframe>
       </article>
 
       <article class="video-item">
-        <h3>5. Multimeter</h3>
-        <iframe src="https://www.youtube.com/embed/7h5McYNQy98" frameborder="0" allowfullscreen></iframe>
+        <h3>🔋 Multimeter</h3>
+        <iframe src="https://www.youtube.com/embed/7h5McYNQy98" allowfullscreen></iframe>
       </article>
 
       <article class="video-item">
-        <h3>6. Oscilloscope</h3>
-        <iframe src="https://www.youtube.com/embed/tWG5x_yM0aM" frameborder="0" allowfullscreen></iframe>
+        <h3>📊 Oscilloscope</h3>
+        <iframe src="https://www.youtube.com/embed/tWG5x_yM0aM" allowfullscreen></iframe>
       </article>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Website LMS Pembelajaran Alat Ukur</p>
+    <p>© 2025 Website Pembelajaran Alat Ukur</p>
   </footer>
 
-  <!-- 🔐 Firebase Authentication -->
+  <!-- 🔒 Firebase Auth -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
@@ -70,97 +215,44 @@
       storageBucket: "lms-ferdianz.firebasestorage.app",
       messagingSenderId: "149251617687",
       appId: "1:149251617687:web:17a480faf6a2436f3a8ad2",
-      measurementId: "G-MY4BP9CD9N"
+      measurementId: "G-MY4BP9CD9N",
     };
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const nav = document.querySelector("nav");
 
-    // 🔒 Cek status login pengguna
     onAuthStateChanged(auth, (user) => {
-      // Bersihkan elemen auth sebelumnya
       const existingAuth = nav.querySelectorAll(".auth-section");
-      existingAuth.forEach(el => el.remove());
+      existingAuth.forEach((el) => el.remove());
+
+      const authSection = document.createElement("div");
+      authSection.className = "auth-section";
 
       if (user) {
-        // ✅ Tampilkan nama & ikon profil + tombol logout
-        const userName = user.displayName || user.email.split("@")[0]; // fallback ke email
-
-        const authSection = document.createElement("div");
-        authSection.className = "auth-section";
-
-        const profileIcon = document.createElement("span");
-        profileIcon.textContent = "👤";
-        profileIcon.className = "profile-icon";
-
-        const nameSpan = document.createElement("span");
-        nameSpan.textContent = userName;
-        nameSpan.className = "user-name";
-
-        const logoutBtn = document.createElement("a");
-        logoutBtn.href = "#";
-        logoutBtn.textContent = "Logout";
-        logoutBtn.className = "auth-btn";
-        logoutBtn.addEventListener("click", async (e) => {
+        const userName = user.displayName || user.email.split("@")[0];
+        authSection.innerHTML = `
+          <span class="profile-icon">👤</span>
+          <span class="user-name">${userName}</span>
+          <a href="#" class="auth-btn">Logout</a>
+        `;
+        authSection.querySelector(".auth-btn").addEventListener("click", async (e) => {
           e.preventDefault();
           await signOut(auth);
           alert("Anda telah logout.");
           window.location.href = "login.html";
         });
-
-        authSection.appendChild(profileIcon);
-        authSection.appendChild(nameSpan);
-        authSection.appendChild(logoutBtn);
-        nav.appendChild(authSection);
-
       } else {
-        // 🚫 Belum login → arahkan ke login
-        alert("Silakan login terlebih dahulu untuk mengakses video pembelajaran!");
+        alert("Silakan login terlebih dahulu!");
         window.location.href = "login.html";
       }
+
+      nav.appendChild(authSection);
     });
   </script>
-
-  <style>
-    /* Tambahan CSS agar rapi */
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .auth-section {
-      display: flex;
-      align-items: center;
-      margin-left: auto;
-      gap: 10px;
-    }
-
-    .profile-icon {
-      font-size: 1.3em;
-    }
-
-    .user-name {
-      font-weight: bold;
-      color: #333;
-    }
-
-    .auth-btn {
-      background-color: #d9534f;
-      color: white;
-      padding: 6px 10px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .auth-btn:hover {
-      background-color: #c9302c;
-    }
-  </style>
 </body>
 </html>
+
 
 
 
