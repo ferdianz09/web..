@@ -1,67 +1,138 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Website Pembelajaran Alat Ukur</title>
-  <meta name="description" content="Website pembelajaran alat ukur SMK: materi, video tutorial, dan latihan interaktif untuk memahami dasar-dasar program keahlian.">
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beranda | Website Pembelajaran Alat Ukur</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
+    header {
+      background-color: #0a9396;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      border-bottom: 4px solid #94d2bd;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
     nav {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 15px;
+      gap: 20px;
       flex-wrap: wrap;
+      position: relative;
     }
 
-    .user-info {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: bold;
-      color: #005f73;
-    }
-
-    .logout-btn {
-      color: #ae2012;
+    nav a {
+      color: white;
       text-decoration: none;
       font-weight: bold;
-      border: 1px solid #ae2012;
-      padding: 4px 8px;
-      border-radius: 6px;
       transition: 0.3s;
     }
 
-    .logout-btn:hover {
-      background-color: #ae2012;
+    nav a:hover,
+    nav a.active {
+      color: #ffdd57;
+    }
+
+    .auth-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .profile-icon {
+      font-size: 1.3em;
+    }
+
+    .user-name {
+      font-weight: bold;
       color: #fff;
     }
 
-    .auth-link {
-      color: #005f73;
-      font-weight: bold;
+    .auth-btn {
+      background-color: #d9534f;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 6px;
       text-decoration: none;
+      transition: 0.3s;
+      font-weight: bold;
     }
 
-    .auth-link:hover {
-      text-decoration: underline;
+    .auth-btn:hover {
+      background-color: #c9302c;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
+      text-align: center;
     }
 
     .banner {
-      display: block;
-      max-width: 100%;
-      border-radius: 10px;
-      margin: 15px auto;
+      width: 100%;
+      max-height: 350px;
+      border-radius: 12px;
+      object-fit: cover;
+      margin: 20px 0;
+    }
+
+    section {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+      margin-top: 20px;
+    }
+
+    section h2 {
+      color: #005f73;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      margin: 10px 0;
+    }
+
+    ul li a {
+      text-decoration: none;
+      color: #0a9396;
+      font-weight: bold;
+    }
+
+    ul li a:hover {
+      text-decoration: underline;
     }
 
     blockquote {
+      background: #e0fbfc;
+      border-left: 4px solid #0a9396;
+      padding: 15px;
+      margin-top: 30px;
       font-style: italic;
+      color: #333;
+    }
+
+    footer {
       text-align: center;
-      margin-top: 20px;
-      color: #555;
+      background: #005f73;
+      color: white;
+      padding: 12px 0;
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -69,27 +140,25 @@
   <header>
     <h1>Website Pembelajaran Alat Ukur</h1>
     <nav id="navbar">
-      <a href="index.html">Home</a>
+      <a href="index.html" class="active">Home</a>
       <a href="materi.html">Materi</a>
       <a href="video.html">Video</a>
       <a href="kontak.html">Kontak</a>
     </nav>
   </header>
 
-  <main id="content">
+  <main>
     <h2>Selamat Datang</h2>
     <p>Website ini berisi materi pembelajaran <b>Dasar-Dasar Program Keahlian</b> tentang alat ukur di SMK.</p>
 
-    <!-- Banner -->
-    <img src="assets/banner.jpg" alt="Belajar Alat Ukur" class="banner">
+    <img src="assets/banner.jpg" alt="Banner Alat Ukur" class="banner" />
 
-    <!-- Menu cepat -->
     <section>
-      <h2>Apa yang bisa Anda temukan di sini?</h2>
+      <h2>Apa yang Bisa Anda Temukan di Sini?</h2>
       <ul>
-        <li><a href="materi.html">📘 Materi Alat Ukur</a> – ringkasan materi + link PDF</li>
-        <li><a href="video.html">🎥 Video Tutorial</a> – panduan penggunaan alat ukur</li>
-        <li><a href="kontak.html">💬 Kritik & Saran</a> – bantu kami meningkatkan website ini</li>
+        <li>📘 <a href="materi.html">Materi Alat Ukur</a> – ringkasan dan file PDF</li>
+        <li>🎥 <a href="video.html">Video Tutorial</a> – panduan praktik alat ukur</li>
+        <li>💬 <a href="kontak.html">Kritik & Saran</a> – bantu kami meningkatkan kualitas</li>
       </ul>
     </section>
 
@@ -99,120 +168,58 @@
   </main>
 
   <footer>
-    <p>© 2025 Website Pembelajaran Alat Ukur | Dibuat oleh Ferdi Antoni</p>
-    <p><a href="kontak.html">Hubungi Kami</a></p>
+    <p>© 2025 Website Pembelajaran Alat Ukur</p>
   </footer>
-  
-<script>
-window.addEventListener("scroll", function() {
-  const navbar = document.getElementById("navbar");
-  if (window.scrollY > 50) {
-    navbar.style.padding = "6px 0";
-    navbar.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)";
-  } else {
-    navbar.style.padding = "10px 0";
-    navbar.style.boxShadow = "0 2px 4px rgba(0,0,0,0.1)";
-  }
-});
-</script>
 
-  <!-- 🔥 Firebase SDK & Auth -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
-  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+  <!-- 🔒 Firebase Auth -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyCavsla0yBJkRrZ7H4uUePAQPkKnPVYbbo",
-    authDomain: "lms-ferdianz.firebaseapp.com",
-    projectId: "lms-ferdianz",
-    storageBucket: "lms-ferdianz.firebasestorage.app",
-    messagingSenderId: "149251617687",
-    appId: "1:149251617687:web:17a480faf6a2436f3a8ad2",
-    measurementId: "G-MY4BP9CD9N"
-  };
+    const firebaseConfig = {
+      apiKey: "AIzaSyCavsla0yBJkRrZ7H4uUePAQPkKnPVYbbo",
+      authDomain: "lms-ferdianz.firebaseapp.com",
+      projectId: "lms-ferdianz",
+      storageBucket: "lms-ferdianz.firebasestorage.app",
+      messagingSenderId: "149251617687",
+      appId: "1:149251617687:web:17a480faf6a2436f3a8ad2",
+      measurementId: "G-MY4BP9CD9N",
+    };
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const nav = document.querySelector("nav");
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const nav = document.querySelector("nav");
 
-  onAuthStateChanged(auth, (user) => {
-    const existingAuth = nav.querySelectorAll(".auth-section");
-    existingAuth.forEach(el => el.remove());
+    onAuthStateChanged(auth, (user) => {
+      const existingAuth = nav.querySelectorAll(".auth-section");
+      existingAuth.forEach((el) => el.remove());
 
-    if (user) {
-      const userName = user.displayName || user.email.split("@")[0];
       const authSection = document.createElement("div");
       authSection.className = "auth-section";
 
-      const profileIcon = document.createElement("span");
-      profileIcon.textContent = "👤";
-      profileIcon.className = "profile-icon";
+      if (user) {
+        const userName = user.displayName || user.email.split("@")[0];
+        authSection.innerHTML = `
+          <span class="profile-icon">👤</span>
+          <span class="user-name">${userName}</span>
+          <a href="#" class="auth-btn">Logout</a>
+        `;
+        authSection.querySelector(".auth-btn").addEventListener("click", async (e) => {
+          e.preventDefault();
+          await signOut(auth);
+          alert("Anda telah logout.");
+          window.location.href = "login.html";
+        });
+      } else {
+        authSection.innerHTML = `<a href="login.html" class="auth-btn">Login</a>`;
+      }
 
-      const nameSpan = document.createElement("span");
-      nameSpan.textContent = userName;
-      nameSpan.className = "user-name";
-
-      const logoutBtn = document.createElement("a");
-      logoutBtn.href = "#";
-      logoutBtn.textContent = "Logout";
-      logoutBtn.className = "auth-btn";
-      logoutBtn.addEventListener("click", async (e) => {
-        e.preventDefault();
-        await signOut(auth);
-        alert("Anda telah logout.");
-        window.location.href = "login.html";
-      });
-
-      authSection.appendChild(profileIcon);
-      authSection.appendChild(nameSpan);
-      authSection.appendChild(logoutBtn);
       nav.appendChild(authSection);
-    } else {
-      const loginBtn = document.createElement("a");
-      loginBtn.href = "login.html";
-      loginBtn.textContent = "Login";
-      loginBtn.className = "auth-btn";
-      nav.appendChild(loginBtn);
-    }
-  });
-</script>
+    });
+  </script>
+</body>
+</html>
 
-<style>
-  nav {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .auth-section {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    gap: 10px;
-  }
-
-  .profile-icon {
-    font-size: 1.3em;
-  }
-
-  .user-name {
-    font-weight: bold;
-    color: #333;
-  }
-
-  .auth-btn {
-    background-color: #d9534f;
-    color: white;
-    padding: 6px 10px;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: 0.3s;
-  }
-
-  .auth-btn:hover {
-    background-color: #c9302c;
-  }
-</style>
 
 
 
