@@ -1,186 +1,188 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kontak | LMS Alat Ukur</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontak | Website Pembelajaran Alat Ukur</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    /* Header seragam */
+    /* ====== HEADER & NAVBAR ====== */
     header {
-      background: #0a9396;
-      color: #fff;
-      padding: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    header .logo {
-      font-weight: bold;
-      font-size: 1.3em;
+      background-color: #0a9396;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      border-bottom: 4px solid #94d2bd;
     }
 
     nav {
       display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
+      align-items: center;
       justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      position: relative;
     }
 
     nav a {
-      color: #fff;
+      color: white;
       text-decoration: none;
-      font-weight: 500;
-      padding: 6px 12px;
-      border-radius: 6px;
+      font-weight: bold;
       transition: 0.3s;
     }
 
     nav a:hover,
     nav a.active {
-      background: #005f73;
+      color: #ffdd57;
     }
 
-    .user-info {
+    /* === AUTH SECTION DI KANAN === */
+    .auth-section {
       display: flex;
       align-items: center;
       gap: 10px;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .profile-icon {
+      font-size: 1.3em;
+    }
+
+    .user-name {
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .auth-btn {
+      background-color: #d9534f;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.3s;
       font-weight: bold;
     }
 
-    .logout-btn {
-      background: #ae2012;
-      border: none;
-      color: #fff;
-      padding: 5px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
+    .auth-btn:hover {
+      background-color: #c9302c;
     }
 
-    .logout-btn:hover {
-      background: #bb3e03;
-    }
-
-    /* Konten utama */
-    main {
-      max-width: 900px;
+    /* ====== KONTEN UTAMA ====== */
+    .container {
+      max-width: 1100px;
       margin: 30px auto;
-      padding: 20px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 0 20px;
+    }
+
+    h2 {
+      color: #005f73;
+      margin-bottom: 10px;
       text-align: center;
     }
 
-    .contact-info {
+    .contact-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+      padding: 25px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .contact-card ul {
       list-style: none;
       padding: 0;
+      line-height: 1.8;
+      font-size: 1rem;
       margin: 20px 0;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
     }
 
-    .contact-info li {
-      background: #e0fbfc;
-      padding: 15px 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    .contact-info a {
-      color: #005f73;
+    .contact-card a {
+      color: #0a9396;
       text-decoration: none;
       font-weight: 500;
     }
 
-    .contact-info a:hover {
+    .contact-card a:hover {
       text-decoration: underline;
     }
 
-    .form-container {
-      margin: 30px auto;
-      max-width: 600px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      border-radius: 10px;
-      overflow: hidden;
+    .form-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+      padding: 25px;
+    }
+
+    .form-card p {
+      color: #444;
+      text-align: center;
     }
 
     .form-container iframe {
       width: 100%;
-      height: 500px;
+      height: 600px;
       border: none;
+      border-radius: 10px;
+      margin-top: 15px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     }
 
     footer {
-      background: #0a9396;
-      color: #fff;
       text-align: center;
-      padding: 10px;
+      background: #005f73;
+      color: white;
+      padding: 10px 0;
       margin-top: 40px;
-    }
-
-    @media (max-width: 650px) {
-      header {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-      }
-
-      nav {
-        justify-content: center;
-      }
-
-      .contact-info {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .form-container iframe {
-        height: 600px;
-      }
     }
   </style>
 </head>
+
 <body>
   <header>
-    <div class="logo">LMS Alat Ukur</div>
-    <nav>
+    <h1>Kontak Kami</h1>
+    <nav id="navbar">
       <a href="index.html">Home</a>
       <a href="materi.html">Materi</a>
       <a href="video.html">Video</a>
       <a href="kontak.html" class="active">Kontak</a>
     </nav>
-    <div class="user-info">
-      <span id="userName"></span>
-      <button class="logout-btn" id="logoutBtn">Logout</button>
-    </div>
   </header>
 
-  <main>
-    <h2>📬 Hubungi Kami</h2>
-    <ul class="contact-info">
-      <li>📧 Email: <a href="mailto:ferdiantoni.2024@student.uny.ac.id">ferdiantoni.2024@student.uny.ac.id</a></li>
-      <li>📱 WhatsApp: <a href="https://wa.me/6285694328103" target="_blank">085694328103</a></li>
-    </ul>
+  <main class="container">
+    <section class="contact-card">
+      <h2>📬 Hubungi Kami</h2>
+      <ul>
+        <li>📧 Email: 
+          <a href="mailto:ferdiantoni.2024@student.uny.ac.id">
+            ferdiantoni.2024@student.uny.ac.id
+          </a>
+        </li>
+        <li>📱 WhatsApp: 
+          <a href="https://wa.me/6285694328103" target="_blank">
+            085694328103
+          </a>
+        </li>
+      </ul>
+    </section>
 
-    <h2>📝 Kritik & Saran</h2>
-    <p>Kami sangat menghargai masukan Anda. Silakan isi formulir berikut agar website ini bisa lebih baik ke depannya.</p>
-
-    <div class="form-container">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeqq-VHwEzhRysB3g0JbZze8wkldXIfTmU-VxsJ4unZgl82rA/viewform?usp=sf_link" allowfullscreen></iframe>
-    </div>
+    <section class="form-card">
+      <h2>📝 Kritik & Saran</h2>
+      <p>Kami sangat menghargai masukan Anda. Silakan isi formulir berikut agar website ini bisa lebih baik ke depannya.</p>
+      <div class="form-container">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeqq-VHwEzhRysB3g0JbZze8wkldXIfTmU-VxsJ4unZgl82rA/viewform?usp=sf_link" allowfullscreen></iframe>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <p>© 2025 Website LMS Pembelajaran Alat Ukur | Dibuat oleh Ferdi Antoni</p>
+    <p>© 2025 Website Pembelajaran Alat Ukur</p>
   </footer>
 
-  <!-- Firebase Auth -->
+  <!-- 🔒 Firebase Auth -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
@@ -192,29 +194,41 @@
       storageBucket: "lms-ferdianz.firebasestorage.app",
       messagingSenderId: "149251617687",
       appId: "1:149251617687:web:17a480faf6a2436f3a8ad2",
-      measurementId: "G-MY4BP9CD9N"
+      measurementId: "G-MY4BP9CD9N",
     };
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
-
-    const userNameEl = document.getElementById("userName");
-    const logoutBtn = document.getElementById("logoutBtn");
+    const nav = document.querySelector("nav");
 
     onAuthStateChanged(auth, (user) => {
+      const existingAuth = nav.querySelectorAll(".auth-section");
+      existingAuth.forEach((el) => el.remove());
+
+      const authSection = document.createElement("div");
+      authSection.className = "auth-section";
+
       if (user) {
-        const displayName = user.displayName || user.email.split('@')[0];
-        userNameEl.textContent = `👤 ${displayName}`;
+        const userName = user.displayName || user.email.split("@")[0];
+        authSection.innerHTML = `
+          <span class="profile-icon">👤</span>
+          <span class="user-name">${userName}</span>
+          <a href="#" class="auth-btn">Logout</a>
+        `;
+        authSection.querySelector(".auth-btn").addEventListener("click", async (e) => {
+          e.preventDefault();
+          await signOut(auth);
+          alert("Anda telah logout.");
+          window.location.href = "login.html";
+        });
       } else {
+        alert("Silakan login terlebih dahulu!");
         window.location.href = "login.html";
       }
-    });
 
-    logoutBtn.addEventListener("click", () => {
-      signOut(auth).then(() => {
-        window.location.href = "login.html";
-      });
+      nav.appendChild(authSection);
     });
   </script>
 </body>
 </html>
+
